@@ -1,5 +1,9 @@
 module Msg exposing (..)
 
+import Model exposing (..)
+
 
 type Msg
-    = NoOp
+    = NewGame
+    | Place BoardId
+    | Select Piece

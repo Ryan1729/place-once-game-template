@@ -19,7 +19,7 @@ view { mdl, model } =
             mdl
             [ Button.raised
             , Button.ripple
-            , Button.onClick (U NoOp)
+            , Button.onClick (U NewGame)
             ]
-            [ text "test Button" ]
+            [ text "New Game" ]
         ]
