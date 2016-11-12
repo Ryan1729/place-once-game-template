@@ -43,10 +43,17 @@ type alias Move =
 
 getMoves : Rack -> Board -> List Move
 getMoves rack board =
-    List.map2 (,)
-        (Model.getAvailablePieces rack)
-        (Model.getAvailableBoardIds board)
-        |> Extras.shuffle (Random.initialSeed 42)
+    let
+        boardIds =
+            Model.getAvailableBoardIds board
+    in
+        List.concatMap
+            (\piece ->
+                List.map ((,) piece)
+                    boardIds
+            )
+            (Model.getAvailablePieces rack)
+            |> Extras.shuffle (Random.initialSeed 42)
 
 
 isCPULosingModel : Model -> Bool
